@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Models\Job;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,20 +15,32 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// All jobs
 Route::get('/', function () {
-    return view('welcome');
+    return view('jobs', [
+        'heading' => 'Latest Jobs',
+        'jobs' => Job::all()
+    ]);
 });
 
-Route::get('/hello', function() {
-    return response("<h1>Hello World</h1>", 200) 
-        ->header('Content-Type', 'text/plain')
-        ->header('foo', 'bar');
-});
+// Single job
+Route::get('/jobs/{id}', function($id){
+    return view('job', [
+        'job' => Job::find($id)
+    ]);
+ });
 
-Route::get('/posts/{id}', function($id){
-    return response('Post ' . $id);
-})->where('id', '[0-9]+');
 
-Route::get('/search', function(Request $request){
-    return($request->name . ' ' .  $request->city);
-});
+// Route::get('/hello', function() {
+//     return response("<h1>Hello World</h1>", 200) 
+//         ->header('Content-Type', 'text/plain')
+//         ->header('foo', 'bar');
+// });
+
+// Route::get('/posts/{id}', function($id){
+//     return response('Post ' . $id);
+// })->where('id', '[0-9]+');
+
+// Route::get('/search', function(Request $request){
+//     return($request->name . ' ' .  $request->city);
+// });
