@@ -8,9 +8,10 @@ use Illuminate\Http\Request;
 class JobController extends Controller
 {
      //Show all jobs
-     public function index() {
+     public function index(Request $request) {
+        //  dd(request('tag'));
         return view('jobs.index', [
-            'jobs' => Job::all()
+            'jobs' => Job::latest()->filter(request(['tag']))->get() // sorts by latest
         ]);
     }
 
