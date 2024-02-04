@@ -1,8 +1,9 @@
 <?php
 
+use App\Models\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Models\Job;
+use App\Http\Controllers\JobController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,19 +17,18 @@ use App\Models\Job;
 */
 
 // All jobs
-Route::get('/', function () {
-    return view('jobs', [
-        'heading' => 'Latest Jobs',
-        'jobs' => Job::all()
-    ]);
-});
+Route::get('/', [JobController::class, 'index']);
 
 // Single job
-Route::get('/jobs/{job}', function(Job $job) {
-   
-        return view('job', [
-            'job' => $job
-        ]);
-   
- });
+Route::get('/jobs/{job}', [JobController::class, 'show']);
 
+
+
+// COMMON RESOURCE ROUTES, naming convention - jobs is just the resource for this.
+// index   - Show all jobs
+// show    - Show single job
+// create  - Show form to create a new job
+// store   - Store a new job (when a new job form is submitted)
+// edit    - Show form to edit a job
+// update  - Update a job (when an edit job form is submitted)
+// destroy - Delete a job
