@@ -16,5 +16,14 @@ class Job extends Model
             // search the tags column for the tag request. if it matches it will return it
                 $query->where('tags', 'like', '%' . request('tag') . '%');
             }
+
+            if($filters['search'] ?? false) {
+                // search the title column
+                $query->where('title', 'like', '%' . request('search') . '%')
+                // search the description column
+                ->orWhere('description', 'like', '%' . request('search') . '%')
+                 // search the tags column
+                ->orWhere('tags', 'like', '%' . request('search') . '%');
+            }
     }           
 }
