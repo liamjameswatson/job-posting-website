@@ -45,7 +45,7 @@ class JobController extends Controller
 
         Job::create($formFields); // create the job in the database using the Job model. 
 
-        return redirect('/');
+        return redirect('/')->with('message', 'Job post created successfully');
     }
 
 }
