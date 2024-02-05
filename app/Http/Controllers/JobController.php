@@ -27,4 +27,9 @@ class JobController extends Controller
     public function create() {
         return view('jobs.create');
     }
+
+    //Store job data
+    public function  store(Request $request) {
+        dd($request->all());
+    }
 }

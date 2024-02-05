@@ -20,7 +20,14 @@ use App\Http\Controllers\JobController;
 Route::get('/', [JobController::class, 'index']);
 
 // Show create form
-Route::get('/jobs/create', [JobController::class, 'create'] );
+Route::get('/jobs/create', [JobController::class, 'create']);
+
+// Store Job Data 
+Route::post('/jobs', [JobController::class, 'store']);
+
+
+
+
 
 // Single job
 Route::get('/jobs/{job}', [JobController::class, 'show']);

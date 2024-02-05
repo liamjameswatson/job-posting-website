@@ -1,6 +1,6 @@
 <x-layout>
-    <div
-        class="bg-gray-50 border border-gray-200 p-10 rounded max-w-lg mx-auto mt-24"
+    <x-card
+        class="p-10 max-w-lg mx-auto mt-24"
         >
         <header class="text-center">
             <h2 class="text-2xl font-bold uppercase mb-1">
@@ -9,7 +9,9 @@
             <p class="mb-4">Post a gig to find a developer</p>
         </header>
 
-        <form action="">
+        <form method="POST" action="/jobs">
+            {{-- csrf is a laravel directive to prevent cross site scripting attacks. Use everytime with POST --}}
+            @csrf 
             <div class="mb-6">
                 <label
                     for="company"
@@ -86,7 +88,7 @@
                 />
             </div>
 
-            <div class="mb-6">
+            {{-- <div class="mb-6">
                 <label for="logo" class="inline-block text-lg mb-2">
                     Company Logo
                 </label>
@@ -95,7 +97,7 @@
                     class="border border-gray-200 rounded p-2 w-full"
                     name="logo"
                 />
-            </div>
+            </div> --}}
 
             <div class="mb-6">
                 <label
@@ -122,5 +124,5 @@
                 <a href="/" class="text-black ml-4"> Back </a>
             </div>
         </form>
-    </div>
+    </x-card>
 </x-layout>
