@@ -46,7 +46,7 @@ class JobController extends Controller
         // if an image is submitted, (request has file called 'logo')
         if($request->hasFile('logo') ){
             // add 'logo' to formFields (like above) and set it the path, and store it in a folder called 'logos'
-            $formFields['logo'] = $request->file('logo')->store('logos');
+            $formFields['logo'] = $request->file('logo')->store('logos', 'public');
 
         }
 
