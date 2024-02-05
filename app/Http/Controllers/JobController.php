@@ -43,6 +43,9 @@ class JobController extends Controller
             'description' => 'required',
         ]);
 
+        Job::create($formFields); // create the job in the database using the Job model. 
+
         return redirect('/');
     }
+
 }
