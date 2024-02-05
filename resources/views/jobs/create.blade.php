@@ -9,7 +9,7 @@
             <p class="mb-4">Post a gig to find a developer</p>
         </header>
 
-        <form method="POST" action="/jobs">
+        <form method="POST" action="/jobs" enctype="multipart/form-data">
             {{-- csrf is a laravel directive to prevent cross site scripting attacks. Use everytime with POST --}}
             @csrf 
             <div class="mb-6">
@@ -24,7 +24,8 @@
                     name="company"
                     value="{{old('company')}}"
                 />
-                @error('company')
+                {{-- error is same as name --}}
+                @error('company')  
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                 @enderror
             </div>
@@ -113,7 +114,7 @@
                 @enderror
             </div>
 
-            {{-- <div class="mb-6">
+            <div class="mb-6">
                 <label for="logo" class="inline-block text-lg mb-2">
                     Company Logo
                 </label>
@@ -122,7 +123,11 @@
                     class="border border-gray-200 rounded p-2 w-full"
                     name="logo"
                 />
-            </div> --}}
+
+                @error('logo')
+                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+            @enderror
+            </div>
 
             <div class="mb-6">
                 <label
