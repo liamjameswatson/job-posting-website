@@ -19,11 +19,12 @@ use App\Http\Controllers\JobController;
 // All jobs
 Route::get('/', [JobController::class, 'index']);
 
+// Show create form
+Route::get('/jobs/create', [JobController::class, 'create'] );
+
 // Single job
 Route::get('/jobs/{job}', [JobController::class, 'show']);
 
-// Show create form
-Route::get('/jobs/create', [JobController::class, 'create'] );
 
 
 // COMMON RESOURCE ROUTES, naming convention - jobs is just the resource for this.
