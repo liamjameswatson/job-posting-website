@@ -54,8 +54,11 @@ Route::delete('/job/{job}', [JobController::class, 'destroy']);
 Route::get('/jobs/{job}', [JobController::class, 'show']);
 
 
-//Show Register/Create Form
-Route:: get('/register', [UserController::class, 'create']);
+//Show Register/Create User Form
+Route::get('/register', [UserController::class, 'create']);
+
+//Create New User
+Route::post('/users', [UserController::class, 'store'])
 
 
 
