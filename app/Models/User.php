@@ -44,7 +44,7 @@ class User extends Authenticatable
     ];
 
     //Relationship with Listings
-    public function job() {
+    public function jobs() {
         // one user has many Job posts. user_id is field in database connecting them
         return $this->hasMany(Job::class, 'user_id');
     }

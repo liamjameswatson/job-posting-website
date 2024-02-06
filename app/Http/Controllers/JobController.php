@@ -99,6 +99,6 @@ class JobController extends Controller
 
    
     public function manage() {
-        return view('jobs.manage', ['jobs' => auth()->user()->job()->get()]); // auth()->user() gives the logged in user
+        return view('jobs.manage', ['jobs' => auth()->user()->jobs()->get()]); // auth()->user() gives the logged in user
     }
 }
