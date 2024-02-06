@@ -50,6 +50,14 @@
             </div>
         </div>
     </x-card>
+
+    {{-- edit --}}
+    <x-card class="mt-4 p-2 flex space-x-6">
+        <a href="/jobs/{{$job->id}}/edit">
+        {{-- font awesome is coming from layout --}}
+             <i class="fa-solid fa-pencil"></i> Edit
+        </a>
+    </x-card>
 </div>
 
 
