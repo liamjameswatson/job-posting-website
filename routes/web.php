@@ -28,6 +28,10 @@ Route::post('/jobs', [JobController::class, 'store']);
 //Show Edit Form
 Route::get('/jobs/{job}/edit', [JobController::class, 'edit']);
 
+//Edit Submit to update 
+Route::put('/jobs/{job}', [JobController::class, 'update']);
+
+
 // Single job
 Route::get('/jobs/{job}', [JobController::class, 'show']);
 
