@@ -50,6 +50,8 @@ class JobController extends Controller
 
         }
 
+        $formFields['user_id'] = auth()->id();
+
         Job::create($formFields); // create the job in the database using the Job model. 
 
         return redirect('/')->with('message', 'Job post created successfully');
