@@ -39,7 +39,6 @@ class UserController extends Controller
     }
 
     // Logout User
-
     public function logout(Request $request) {
         // use auth helper function to remove authentication from user session
         auth()->logout();
@@ -50,5 +49,10 @@ class UserController extends Controller
 
         //redirect to login page
         return redirect('/')->with('message', 'You have been logged out');
+    }
+
+    //Show Login Form
+    public function login() {
+        return view('users.login');
     }
 }
