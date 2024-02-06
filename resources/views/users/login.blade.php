@@ -17,7 +17,7 @@
                     type="email"
                     class="border border-gray-200 rounded p-2 w-full"
                     name="email"
-                    value={{old('email')}}
+                    value="{{old('email')}}"
                 />
                 @error('email')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
@@ -35,7 +35,7 @@
                     type="password"
                     class="border border-gray-200 rounded p-2 w-full"
                     name="password"
-                    value={{old('password')}}
+                    value="{{old('password')}}"
                 />
                 @error('password')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
