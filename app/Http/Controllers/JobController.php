@@ -55,4 +55,11 @@ class JobController extends Controller
         return redirect('/')->with('message', 'Job post created successfully');
     }
 
+    //Show Edit Form
+    public function edit(Job $job) {
+        //dd($job)
+        // dd($job->title);
+        return view('jobs.edit', ['job' => $job]);
+    }
+
 }
