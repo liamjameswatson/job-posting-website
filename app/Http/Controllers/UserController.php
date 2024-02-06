@@ -50,6 +50,5 @@ class UserController extends Controller
 
         //redirect to login page
         return redirect('/')->with('message', 'You have been logged out');
-
     }
 }
