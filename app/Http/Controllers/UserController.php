@@ -2,12 +2,39 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+
+
+use Illuminate\Validation\Rule;
+use function Laravel\Prompts\confirm;
 
 class UserController extends Controller
 {
     // Show Register/Create Form
     public function create() {
         return view('users.register');
+    }
+
+    // Create New User - send to database and store
+    public function store(Request $request) {
+        // dd($request);
+        $formFields = $request->validate([
+        'name' => ['required', 'min:3'],
+        'email' => ['required', 'email', Rule::unique('users','email')], //unique to both users and email column in database table
+        'password' => ['required','confirmed', 'min:6'] // confirmed will match whatever the name is (eg. password) with a field with the same name but with _confimation (eg. password_confirmation)
+    ]);
+
+    //Hash Password with Bcrypt
+    $formFields['password'] = bcrypt($formFields['password']); // Take the password and sets it to the hashed password
+
+    //Create User
+    $user = User::create($formFields);
+
+    // Log the user in upon creation
+    auth()->login($user); //auth helper function
+
+    return redirect('/')-with('message', 'User created and logged in successfully');
+    
     }
 }
