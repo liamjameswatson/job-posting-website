@@ -39,7 +39,6 @@ class UserController extends Controller
     }
 
     // Logout User
-
     public function logout(Request $request) {
         // use auth helper function to remove authentication from user session
         auth()->logout();
@@ -50,6 +49,31 @@ class UserController extends Controller
 
         //redirect to login page
         return redirect('/')->with('message', 'You have been logged out');
+    }
+
+    //Show Login Form
+    public function login() {
+        return view('users.login');
+    }
+
+    //Login User
+    public function authenticate(Request $request) {
+        $formFields = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'] 
+        ]);
+        
+        //use the attempt method to login 
+        if(auth()->attempt($formFields)) {
+            // if true, regenerate session with the request object
+            $request->session()->regenerate();
+
+            return redirect('/')->with('message', 'You have been logged in successfully');
+        };
+
+        // if attempt failed, (is false), display 'Invalid Credentials' message in email
+        return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
+
 
     }
 }
