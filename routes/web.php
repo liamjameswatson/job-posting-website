@@ -31,6 +31,9 @@ Route::get('/jobs/{job}/edit', [JobController::class, 'edit']);
 //Update Job (send edit form to database) 
 Route::put('/jobs/{job}', [JobController::class, 'update']);
 
+//Delete Job
+Route::delete('/job/{job}', [JobController::class, 'delete']);
+
 
 // Single job
 Route::get('/jobs/{job}', [JobController::class, 'show']);
