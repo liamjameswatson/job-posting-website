@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Job extends Model
 {
@@ -27,5 +28,11 @@ class Job extends Model
                  // search the tags column
                 ->orWhere('tags', 'like', '%' . request('search') . '%');
             }
-    }           
+    } 
+    
+    // Relationship to User
+    public function user() {
+        // A listing belongs to a user id from user model
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }
