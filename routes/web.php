@@ -4,6 +4,8 @@ use App\Models\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +17,19 @@ use App\Http\Controllers\JobController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+
+// php artisan make:controller UserContoller - make a laravel controller in terminal
+
+
+// COMMON RESOURCE ROUTES, naming convention - jobs is just the resource for this.
+// index   - Show all jobs
+// show    - Show single job
+// create  - Show form to create a new job
+// store   - Store a new job (when a new job form is submitted)
+// edit    - Show form to edit a job
+// update  - Update a job (when an edit job form is submitted)
+// destroy - Delete a job
 
 // All jobs
 Route::get('/', [JobController::class, 'index']);
@@ -39,12 +54,8 @@ Route::delete('/job/{job}', [JobController::class, 'destroy']);
 Route::get('/jobs/{job}', [JobController::class, 'show']);
 
 
+//Show Register/Create Form
+Route:: get('/register', [UserController::class, 'create']);
 
-// COMMON RESOURCE ROUTES, naming convention - jobs is just the resource for this.
-// index   - Show all jobs
-// show    - Show single job
-// create  - Show form to create a new job
-// store   - Store a new job (when a new job form is submitted)
-// edit    - Show form to edit a job
-// update  - Update a job (when an edit job form is submitted)
-// destroy - Delete a job
+
+
