@@ -32,7 +32,7 @@ Route::get('/jobs/{job}/edit', [JobController::class, 'edit']);
 Route::put('/jobs/{job}', [JobController::class, 'update']);
 
 //Delete Job
-Route::delete('/job/{job}', [JobController::class, 'delete']);
+Route::delete('/job/{job}', [JobController::class, 'destroy']);
 
 
 // Single job
