@@ -35,7 +35,7 @@ use App\Http\Controllers\UserController;
 Route::get('/', [JobController::class, 'index']);
 
 // Show create form
-Route::get('/jobs/create', [JobController::class, 'create']);
+Route::get('/jobs/create', [JobController::class, 'create'])->middleware('auth');
 
 // Store Job Data (send create form to database) 
 Route::post('/jobs', [JobController::class, 'store']);
@@ -64,7 +64,7 @@ Route::post('/users', [UserController::class, 'store']);
 Route::post('/logout', [UserController::class, 'logout']);
 
 //Show Login Form
-Route::get('/login', [UserController::class, 'login']);
+Route::get('/login', [UserController::class, 'login'])->name('login');
 
 //Log In User 
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
