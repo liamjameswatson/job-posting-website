@@ -35,19 +35,19 @@ use App\Http\Controllers\UserController;
 Route::get('/', [JobController::class, 'index']);
 
 // Show create form
-Route::get('/jobs/create', [JobController::class, 'create']);
+Route::get('/jobs/create', [JobController::class, 'create'])->middleware('auth'); // auth middleware - only authorised users can access this route
 
 // Store Job Data (send create form to database) 
-Route::post('/jobs', [JobController::class, 'store']);
+Route::post('/jobs', [JobController::class, 'store'])->middleware('auth');
 
 //Show Edit Form
-Route::get('/jobs/{job}/edit', [JobController::class, 'edit']);
+Route::get('/jobs/{job}/edit', [JobController::class, 'edit'])->middleware('auth');
 
 //Update Job (send edit form to database) 
-Route::put('/jobs/{job}', [JobController::class, 'update']);
+Route::put('/jobs/{job}', [JobController::class, 'update'])->middleware('auth');
 
 //Delete Job
-Route::delete('/job/{job}', [JobController::class, 'destroy']);
+Route::delete('/job/{job}', [JobController::class, 'destroy'])->middleware('auth');
 
 
 // Single job
@@ -55,16 +55,16 @@ Route::get('/jobs/{job}', [JobController::class, 'show']);
 
 
 //Show Register/Create User Form
-Route::get('/register', [UserController::class, 'create']);
+Route::get('/register', [UserController::class, 'create'])->middleware('guest'); // guest middleware prevents a logged in user accessing this page. (They cannot register) Same on login page.
 
 //Create New User
 Route::post('/users', [UserController::class, 'store']);
 
 //Logout User
-Route::post('/logout', [UserController::class, 'logout']);
+Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
 //Show Login Form
-Route::get('/login', [UserController::class, 'login']);
+Route::get('/login', [UserController::class, 'login'])->name('login')->middleware(('guest'));
 
 //Log In User 
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);

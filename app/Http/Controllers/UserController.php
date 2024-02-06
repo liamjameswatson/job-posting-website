@@ -68,7 +68,7 @@ class UserController extends Controller
             // if true, regenerate session with the request object
             $request->session()->regenerate();
 
-            return redirect('/')->with('message', 'You have been logged in successfully');
+            return redirect('/')->with('message', 'Login success');
         };
 
         // if attempt failed, (is false), display 'Invalid Credentials' message in email
