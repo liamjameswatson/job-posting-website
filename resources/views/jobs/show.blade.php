@@ -13,7 +13,8 @@
         >
             <img
                 class="w-48 mr-6 mb-6"
-                src="{{asset('/images/no-image.png')}}"
+                {{-- if image set as image path, else set as default image --}}
+                src="{{$job->logo ? asset('storage/' . $job->logo) : asset('images/no-image.png')}}"
                 alt=""
             />
 
