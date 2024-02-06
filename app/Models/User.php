@@ -42,4 +42,24 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    //Relationship with Listings
+    public function job() {
+        // one user has many Job posts. user_id is field in database connecting them
+        return $this->hasMany(Job::class, 'user_id');
+    }
 }
+
+
+
+
+// Tinker:      
+// command line for looking at database
+// php artisan tinker - gives the shell 
+//\App\Models\Job::first() - returns the first model instance
+// \App\Models\Job::find(3) - returns the third model instance
+// \App\Models\Job::find(3)->user - returns the user for the third model instance
+
+//Get all the user's listings
+// $user = \Apps\Models\User::find(1)   or      // $user = \AppzModels\User::first()
+// $user->jobs
