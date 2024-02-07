@@ -49,9 +49,12 @@ Route::put('/jobs/{job}', [JobController::class, 'update'])->middleware('auth');
 //Delete Job
 Route::delete('/job/{job}', [JobController::class, 'destroy'])->middleware('auth');
 
+//Manage Jobs
+Route::get('/jobs/manage', [JobController::class, 'manage'])->middleware('auth');
 
 // Single job
 Route::get('/jobs/{job}', [JobController::class, 'show']);
+
 
 
 //Show Register/Create User Form
@@ -68,6 +71,4 @@ Route::get('/login', [UserController::class, 'login'])->name('login')->middlewar
 
 //Log In User 
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
-
-
 
