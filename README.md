@@ -4,7 +4,7 @@ An app for posting software jobs
 
 ## Description
 
-This is a laravel app, that connects to a MySQL database
+This is a laravel app, that connects to a MySQL database. It allows a user to post software jobs to the home page. Create an account upload the job information and post it. 
 
 ## Usage
 
