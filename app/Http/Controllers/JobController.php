@@ -95,6 +95,10 @@ class JobController extends Controller
 
     //Delete Job
     public function destroy(Job $job) {
+        // Make sure logged in user is owner
+        if($job->user_id != auth()->id()) {
+            abort(403, 'Unauthorized Action');
+        }
         //take job and call the delete method 
         $job->delete();
         return redirect('/')->with('message', 'Job deleted successfully');
