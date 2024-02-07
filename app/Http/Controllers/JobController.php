@@ -66,6 +66,12 @@ class JobController extends Controller
 
     //Update job data
     public function update(Request $request, Job $job) {
+
+        // Make sure logged in user is owner
+        if($job->user_id != auth()->id()) {
+            abort(403, 'Unauthorized Action');
+        }
+
         $formFields = $request->validate([
             'title' => 'required',
             'company' => ['required'], 
@@ -96,8 +102,6 @@ class JobController extends Controller
     }
 
     //Manage Jobs
-
-   
     public function manage() {
         return view('jobs.manage', ['jobs' => auth()->user()->jobs()->get()]); // auth()->user() gives the logged in user
     }
