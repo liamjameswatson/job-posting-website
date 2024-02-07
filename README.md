@@ -34,7 +34,7 @@ When uploading a company image, go to "storage/app/public". Create a symlink wit
 
 ## Screenshot
 
-![Screenshot](./public\screenshot\screenshot.png)
+![Screenshot](./public/screenshot/screenshot.png)
 
 ## Credits
 
